@@ -18,15 +18,6 @@ def helpweb():
 
 class Gui:
 
-	def framesetup(self): #frames
-		self.btnframe = ttk.Frame(self.window, height=400, width=200, relief=SUNKEN)
-		self.canvasframe = ttk.Frame(self.window, height=400,width=600, relief=SUNKEN)
-		self.outputframe = ttk.Frame(self.window, height=200, width=800, relief=SUNKEN)
-		self.btnframe.grid(row=0,column=0)
-		self.canvasframe.grid(row=0,column=1)
-		self.outputframe.grid(row=1,column=0, columnspan=2)
-
-
 	def menusetup(self): #menu
 		self.menubar = Menu(self.window)
 		self.filemenu = Menu(self.menubar, tearoff=0)
@@ -43,6 +34,25 @@ class Gui:
 		self.menubar.add_cascade(label="SQL", menu = self.sqlmenu)
 		self.menubar.add_cascade(label="Help", menu=self.helpmenu)
 
+	def framesetup(self): #frames
+		self.btnframe = ttk.Frame(self.window, height=400, width=200, relief=SUNKEN)
+		self.canvasframe = ttk.Frame(self.window, height=400,width=600, relief=SUNKEN)
+		self.outputframe = ttk.Frame(self.window, height=200, width=800, relief=SUNKEN)
+		self.btnframe.grid(row=0,column=0)
+		self.canvasframe.grid(row=0,column=1)
+		self.outputframe.grid(row=1,column=0, columnspan=2)
+
+	def buttons(self):
+		self.eimg = PhotoImage(file="resources/entity.png")
+		self.rimg = PhotoImage(file="resources/relation.png")
+		self.limg = PhotoImage(file="resources/card.png")
+		self.entityb = ttk.Button(self.btnframe, width=20, image=self.eimg, command=lambda : print("clicked"))
+		self.relation = ttk.Button(self.btnframe, width=20, image=self.rimg, command=lambda : print("clicked"))
+		self.lineb =  ttk.Button(self.btnframe, width=20, image=self.limg, command=lambda : print("clicked"))
+		self.entityb.grid(row=0, column=0, sticky='e')
+		self.relation.grid(row=1, column=0)
+		self.lineb.grid(row=2, column=0)
+
 	def __init__(self):
 		self.window = Tk()
 		self.window.geometry('800x600')
@@ -52,7 +62,7 @@ class Gui:
 		self.window.iconbitmap(r'resources/icon.ico')
 		self.menusetup()
 		self.framesetup()
-		#self.buttons()
+		self.buttons()
 		#self.canvasspace()
 		#self.outputwindow()
 		self.window.config(menu=self.menubar)
