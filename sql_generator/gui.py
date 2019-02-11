@@ -37,7 +37,7 @@ class Gui:
 	def framesetup(self): #frames
 		self.btnframe = ttk.Frame(self.window, height=400, width=200, relief=SUNKEN)
 		self.canvasframe = ttk.Frame(self.window, height=400,width=600, relief=SUNKEN)
-		self.outputframe = ttk.Frame(self.window, height=200, width=800, relief=SUNKEN)
+		self.outputframe = ttk.Frame(self.window, height=200, width=800, relief=RAISED)
 		self.btnframe.grid(row=0,column=0)
 		self.canvasframe.grid(row=0,column=1)
 		self.outputframe.grid(row=1,column=0, columnspan=2)
@@ -53,6 +53,18 @@ class Gui:
 		self.relation.grid(row=1, column=0)
 		self.lineb.grid(row=2, column=0)
 
+	def outputspace(self):
+		self.of = ttk.Notebook(self.outputframe,width=800,height=200)
+		self.f1 = ttk.Frame(self.of)
+		self.f2 = ttk.Frame(self.of)
+		self.of.add(self.f1, text="Output SQL")
+		self.of.add(self.f2, text="Console/Log")
+		self.of.grid(row=0, column=0)
+		self.outputarea = Text(self.f1, width=100) 
+		self.errorarea = Text(self.f2, width=100)
+		self.outputarea.grid(row=0, column=0)
+		self.errorarea.grid(row=0, column=0)
+
 	def __init__(self):
 		self.window = Tk()
 		self.window.geometry('800x600')
@@ -64,7 +76,7 @@ class Gui:
 		self.framesetup()
 		self.buttons()
 		#self.canvasspace()
-		#self.outputwindow()
+		self.outputspace()
 		self.window.config(menu=self.menubar)
 		self.window.resizable(False, False) #resizeable false
-		self.window.mainloop()
+		self.errorarea.insert(END, "Initialized Successfully!\n")
