@@ -7,16 +7,25 @@
 #4 Add textarea for SQL
 
 from tkinter import *
+from tkinter import ttk
 import webbrowser #because help is online
 
 def none():
 	print("Wait for me to implemetnt something here")
-	pass
 
 def helpweb():
 	webbrowser.open("https://soren.in")
 
 class Gui:
+
+	def framesetup(self): #frames
+		self.btnframe = ttk.Frame(self.window, height=400, width=200, relief=SUNKEN)
+		self.canvasframe = ttk.Frame(self.window, height=400,width=600, relief=SUNKEN)
+		self.outputframe = ttk.Frame(self.window, height=200, width=800, relief=SUNKEN)
+		self.btnframe.grid(row=0,column=0)
+		self.canvasframe.grid(row=0,column=1)
+		self.outputframe.grid(row=1,column=0, columnspan=2)
+
 
 	def menusetup(self): #menu
 		self.menubar = Menu(self.window)
@@ -42,6 +51,10 @@ class Gui:
 		#window.iconbitmap(image=icon)
 		self.window.iconbitmap(r'resources/icon.ico')
 		self.menusetup()
+		self.framesetup()
+		#self.buttons()
+		#self.canvasspace()
+		#self.outputwindow()
 		self.window.config(menu=self.menubar)
 		self.window.resizable(False, False) #resizeable false
 		self.window.mainloop()
