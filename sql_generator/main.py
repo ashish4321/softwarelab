@@ -1,4 +1,5 @@
 from gui import Gui
+from erclass import *
 
 def main():
 	maingui = Gui() #initialize the GUI instance

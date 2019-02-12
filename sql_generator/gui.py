@@ -8,6 +8,7 @@
 
 from tkinter import *
 from tkinter import ttk
+from PIL import ImageTk, Image
 import webbrowser #because help is online
 
 def none():
@@ -43,9 +44,9 @@ class Gui:
 		self.outputframe.grid(row=1,column=0, columnspan=2)
 
 	def buttons(self):
-		self.eimg = PhotoImage(file="resources/entity.png")
-		self.rimg = PhotoImage(file="resources/relation.png")
-		self.limg = PhotoImage(file="resources/card.png")
+		self.eimg = ImageTk.PhotoImage(Image.open("resources/entity.png"))
+		self.rimg = ImageTk.PhotoImage(Image.open("resources/relation.png"))
+		self.limg = ImageTk.PhotoImage(Image.open("resources/card.png"))
 		self.entityb = ttk.Button(self.btnframe, width=20, image=self.eimg, command=lambda : print("clicked"))
 		self.relation = ttk.Button(self.btnframe, width=20, image=self.rimg, command=lambda : print("clicked"))
 		self.lineb =  ttk.Button(self.btnframe, width=20, image=self.limg, command=lambda : print("clicked"))
@@ -60,8 +61,8 @@ class Gui:
 		self.of.add(self.f1, text="Output SQL")
 		self.of.add(self.f2, text="Console/Log")
 		self.of.grid(row=0, column=0)
-		self.outputarea = Text(self.f1, width=100) 
-		self.errorarea = Text(self.f2, width=100)
+		self.outputarea = Text(self.f1, width=99) 
+		self.errorarea = Text(self.f2, width=99)
 		self.outputarea.grid(row=0, column=0)
 		self.errorarea.grid(row=0, column=0)
 
