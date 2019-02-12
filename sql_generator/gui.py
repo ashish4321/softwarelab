@@ -17,6 +17,25 @@ def none():
 def helpweb():
 	webbrowser.open("https://soren.in")
 
+def entityButtonClicked():
+	
+	nwindow = Tk()
+	nwindow.geometry('400x200')
+	nwindow.title("Entity")
+	
+	Label(nwindow, text="Name of the table").grid(row=0)
+	Label(nwindow, text="Number of rows").grid(row=1)
+
+	e1 = Entry(nwindow)
+	e2 = Entry(nwindow)
+
+	e1.grid(row=0, column=1)
+	e2.grid(row=1, column=1)
+
+	okBtn= Button(nwindow, text='Ok',).grid(row=3, column=0, sticky=W,pady=4)
+	
+	mainloop( )
+
 class Gui:
 
 	def menusetup(self): #menu
@@ -47,7 +66,7 @@ class Gui:
 		self.eimg = ImageTk.PhotoImage(Image.open("resources/entity.png"))
 		self.rimg = ImageTk.PhotoImage(Image.open("resources/relation.png"))
 		self.limg = ImageTk.PhotoImage(Image.open("resources/card.png"))
-		self.entityb = ttk.Button(self.btnframe, width=20, image=self.eimg, command=lambda : print("clicked"))
+		self.entityb = ttk.Button(self.btnframe, width=20, image=self.eimg, command=entityButtonClicked)
 		self.relation = ttk.Button(self.btnframe, width=20, image=self.rimg, command=lambda : print("clicked"))
 		self.lineb =  ttk.Button(self.btnframe, width=20, image=self.limg, command=lambda : print("clicked"))
 		self.entityb.grid(row=0, column=0, sticky='e')
